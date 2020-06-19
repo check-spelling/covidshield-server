@@ -1,0 +1,5 @@
+^\.github/actions/spell-check/
+^go\.(?:mod|sum)$
+ignore$
+\.env
+\.lock$
