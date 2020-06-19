@@ -25,11 +25,11 @@ const PROMETHEUS = "prometheus"
 
 var log = logger.New("telemetry")
 
-type Cleanuper interface {
+type Cleaner interface {
 	Cleanup()
 }
 
-// traceMetricCleaner implements Cleanuper.
+// traceMetricCleaner implements Cleaner.
 type traceMetricCleaner struct {
 	tracer func()
 	meter  func()
@@ -40,7 +40,7 @@ func (c *traceMetricCleaner) Cleanup() {
 	c.meter()
 }
 
-func Initialize() Cleanuper {
+func Initialize() Cleaner {
 	return &traceMetricCleaner{tracer: InitTracer(), meter: InitMeter()}
 }
 
